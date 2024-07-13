@@ -1,11 +1,28 @@
 import ManageRestaurantForm from "../forms/manage-restaurant-form/ManageRestaurantForm";
-import { useCreateMyRestaurant } from "../api/MyRestaurantApi";
+import {
+  useCreateMyRestaurant,
+  useGetMyRestaurant,
+  useUpdateMyRestaurant,
+} from "../api/MyRestaurantApi";
+import { useEffect } from "react";
 
 const ManageRestaurantPage = () => {
-  const { createRestaurant, isLoading } = useCreateMyRestaurant();
+  const { restaurant } = useGetMyRestaurant();
+
+  const { createRestaurant, isLoading: isCreateLoading } =
+    useCreateMyRestaurant();
+
+  const { updateRestaurant, isLoading: isUpdateLoading } =
+    useUpdateMyRestaurant();
+
+  const isEditing = !!restaurant;
 
   return (
-    <ManageRestaurantForm onSave={createRestaurant} isLoading={isLoading} />
+    <ManageRestaurantForm
+      restaurant={restaurant}
+      onSave={isEditing ? updateRestaurant : createRestaurant}
+      isLoading={isCreateLoading || isUpdateLoading}
+    />
   );
 };
 
