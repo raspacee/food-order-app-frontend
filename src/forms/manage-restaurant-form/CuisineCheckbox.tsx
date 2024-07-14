@@ -1,8 +1,4 @@
-import {
-  ControllerRenderProps,
-  FieldValues,
-  useFormContext,
-} from "react-hook-form";
+import { ControllerRenderProps, FieldValues } from "react-hook-form";
 import { FormControl, FormItem, FormLabel } from "../../components/ui/form";
 import { Checkbox } from "../../components/ui/checkbox";
 
@@ -11,8 +7,6 @@ type Props = {
   field: ControllerRenderProps<FieldValues, "cuisines">;
 };
 const CuisineCheckbox = ({ cuisine, field }: Props) => {
-  const { control } = useFormContext();
-
   return (
     <FormItem className="flex flex-row items-center space-x-1 space-y-0 mt-2">
       <FormControl>

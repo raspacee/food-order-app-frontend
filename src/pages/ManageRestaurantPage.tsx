@@ -4,7 +4,6 @@ import {
   useGetMyRestaurant,
   useUpdateMyRestaurant,
 } from "../api/MyRestaurantApi";
-import { useEffect } from "react";
 
 const ManageRestaurantPage = () => {
   const { restaurant } = useGetMyRestaurant();
