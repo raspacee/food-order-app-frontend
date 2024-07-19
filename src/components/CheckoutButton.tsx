@@ -33,16 +33,16 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
     });
   };
 
-  if (isAuthLoading || !currentUser || isLoading) {
-    return <LoadingButton />;
-  }
-
   if (!isAuthenticated) {
     return (
       <Button className="bg-orange-500 flex-1" onClick={onLogin}>
         Log in to check out
       </Button>
     );
+  }
+
+  if (isAuthLoading || !currentUser || isLoading) {
+    return <LoadingButton />;
   }
 
   return (
